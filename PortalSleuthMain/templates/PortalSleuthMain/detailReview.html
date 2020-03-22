@@ -1,0 +1,19 @@
+{% extends 'PortalSleuthMain/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="#">{{ object.user.username }}</a>
+      <small class="text-muted">{{ object.created_at|date:"F d, Y" }}</small>
+    </div>
+    {% if user.username == object.user.username %}
+    <a style="float:right;" class="btn btn-outline-primary" href="{% url 'update-review' object.id %}">Update</a>
+    {% endif %}
+    <h2 class="article-title">{{ object.websiteName }}</h2>
+    <p class="article-content">{{ object.review }}</p>
+  </div>
+</article>
+<a class="btn btn-outline-info" href="{% url 'PortalSleuth-review' %}">Back</a>
+{% endblock %}

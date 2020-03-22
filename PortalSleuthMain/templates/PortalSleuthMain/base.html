@@ -12,31 +12,75 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <title>The Portal Sleuth</title>
+    <style type="text/css">
+      .content-section {
+      background: #ffffff;
+      padding: 10px 20px;
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+      margin-bottom: 20px;
+    }
+
+    .article-title {
+      color: #444444;
+    }
+
+    a.article-title:hover {
+      color: #428bca;
+      text-decoration: none;
+    }
+
+    .article-content {
+      white-space: pre-line;
+    }
+
+    .article-img {
+      height: 65px;
+      width: 65px;
+      margin-right: 16px;
+    }
+
+    .article-metadata {
+      padding-bottom: 1px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid #e3e3e3
+    }
+
+    .article-metadata a:hover {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .article-svg {
+      width: 25px;
+      height: 25px;
+      vertical-align: middle;
+    }
+
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/home">The Portal Sleuth</a>
+        <a class="navbar-brand" href="/review">The Portal Sleuth</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <!-- <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
               <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
             </li>
-          </ul>
+          </ul> -->
           <ul class="navbar-nav ml-auto">
               {% if user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link" href="/about">About</a>
-              </li>
+
               <li class="nav-item">
                 <a class="nav-link" href="/review">Reviews</a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="">Your comments</a>
-              </li>
+              </li> -->
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                   </li>
