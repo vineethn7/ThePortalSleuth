@@ -11,7 +11,6 @@ def register(request):
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()  # load the profile instance created by the signal
-
             user.userprofile.username = form.cleaned_data.get('username')
             user.save()
             raw_password = form.cleaned_data.get('password1')

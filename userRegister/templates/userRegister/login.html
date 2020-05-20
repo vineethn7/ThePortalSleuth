@@ -1,6 +1,7 @@
 {% extends "PortalSleuthMain/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+<br>
     <div class="content-section">
         <form method="POST">
             {% csrf_token %}
@@ -9,7 +10,7 @@
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Login</button>
+                <button class="btn btn-info" type="submit">Login</button>
             </div>
         </form>
         <div class="border-top pt-3">

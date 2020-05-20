@@ -1,0 +1,41 @@
+{% extends 'PortalSleuthMain/base.html' %}
+{% block content %}
+<div>
+<br>
+ </div>
+
+<h1>
+Shopping
+</h1>
+
+{% for site in shoppingSites %}
+<article class="media content-section">
+  <div class="media-body">
+    <h2><a class="article-title" href="{% url 'PortalSleuth-review' %}">{{ site.websiteName }}</a></h2>
+  </div>
+</article>
+{% endfor %}
+<h1>
+Online Cab Services
+</h1>
+
+{% for site in cabSites %}
+<article class="media content-section">
+  <div class="media-body">
+    <h2><a class="article-title" href="{% url 'PortalSleuth-review' %}">{{ site.websiteName }}</a></h2>
+  </div>
+</article>
+{% endfor %}
+<h1>
+Online Classes
+</h1>
+
+{% for site in onlineClass %}
+<article class="media content-section">
+  <div class="media-body">
+    <h2><a class="article-title" href="{% url 'PortalSleuth-review' %}">{{ site.websiteName }}</a></h2>
+  </div>
+</article>
+{% endfor %}
+
+{% endblock %}

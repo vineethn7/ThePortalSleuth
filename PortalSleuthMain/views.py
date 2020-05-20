@@ -18,8 +18,14 @@ from rake_nltk import Rake, Metric
 def home(request):
     return render(request,'PortalSleuthMain/home.html')
 
-def about(request):
-    return render(request,'PortalSleuthMain/about.html')
+def contact(request):
+    return render(request,'PortalSleuthMain/contact.html')
+@login_required
+def category(request):
+    shoppingSites=CategoryModel.objects.filter(categoryName="Shopping")
+    cabSites=CategoryModel.objects.filter(categoryName="Cab Services")
+    onlineClass=CategoryModel.objects.filter(categoryName="Online Classes")
+    return render(request,'PortalSleuthMain/category.html',{'shoppingSites':shoppingSites,'cabSites':cabSites,'onlineClass':onlineClass})
 
 @login_required
 def review(request):
@@ -31,11 +37,9 @@ def review(request):
     lst=[]
     for k in revs:
         lst.append(str(k.review))
-
     out=[]
     for i in lst:
         temp=i
-
         r.extract_keywords_from_text(temp)
         t=r.get_ranked_phrases()
         out.append(t)
@@ -45,15 +49,12 @@ def review(request):
     for o in out:
         for i in range(0,len(o)):
             c=c+1
-            if "bad" in o[i] or "dont like" in o[i] or "very bad" in o[i] :
+            if "hate" in o[i] or "not good" in o[i] or "not satisfied" in o[i] or "bad" in o[i] or "dont like" in o[i] or "very bad" in o[i] :
                 overall_rating=overall_rating-1
 
             else:
                 overall_rating=overall_rating+1
     overall_rating=round(5*overall_rating/c,2)
-
-
-    # overall_rating/=len(max(out,key=len))
 
     return render(request,'PortalSleuthMain/review.html',{'reviews':reviews,'out':overall_rating})
 

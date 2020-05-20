@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,23 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://bootswatch.com/4/cosmo/bootstrap.min.css" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
     <title>The Portal Sleuth</title>
     <style type="text/css">
       .content-section {
-      background: #ffffff;
+      background-color: #333;
       padding: 10px 20px;
-      border: 1px solid #dddddd;
+      border: 1px solid #000000;
       border-radius: 3px;
       margin-bottom: 20px;
     }
 
     .article-title {
-      color: #444444;
+      color: #ffffff;
     }
 
     a.article-title:hover {
@@ -57,44 +61,101 @@
       vertical-align: middle;
     }
 
+    html,
+    body {
+      height: 100%;
+      background-color: #333;
+    }
+
+    body {
+      display: -ms-flexbox;
+      display: flex;
+      color: #fff;
+      text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+      /* box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5); */
+    }
+
+    .cover-container {
+      max-width: 42em;
+    }
+
+
+    /*
+     * Header
+     */
+    .masthead {
+      margin-bottom: 2rem;
+    }
+
+    .masthead-brand {
+      margin-bottom: 0;
+    }
+
+    .nav-masthead .nav-link {
+      padding: .25rem 0;
+      font-weight: 700;
+      color: rgba(255, 255, 255, .5);
+      background-color: transparent;
+      border-bottom: .25rem solid transparent;
+    }
+
+    .nav-masthead .nav-link:hover,
+    .nav-masthead .nav-link:focus {
+      border-bottom-color: rgba(255, 255, 255, .25);
+    }
+
+    .nav-masthead .nav-link + .nav-link {
+      margin-left: 1rem;
+    }
+
+    .nav-masthead .active {
+      color: #fff;
+      border-bottom-color: #fff;
+    }
+
+    @media (min-width: 48em) {
+      .masthead-brand {
+        float: left;
+      }
+      .nav-masthead {
+        float: right;
+      }
+    }
+
+
+    /*
+     * Cover
+     */
+    .cover {
+      padding: 0 1.5rem;
+    }
+    .cover .btn-lg {
+      padding: .75rem 1.25rem;
+      font-weight: 700;
+    }
+
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/review">The Portal Sleuth</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class=" d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <!-- <header class="masthead mb-auto"> -->
+      <div class="inner">
+        <h3 class="masthead-brand"><a class="nav-link" href="/"><img src="{% static "PortalSleuthMain/logo.JPG" %}"width="40px" height="40px"><a></h3>
+        <nav class="nav nav-masthead justify-content-center">
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <!-- <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-            </li>
-          </ul> -->
-          <ul class="navbar-nav ml-auto">
-              {% if user.is_authenticated %}
+          <a class="nav-link active" href="/">The Portal Sleuth</a>
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="/contact">Contact</a>
 
-              <li class="nav-item">
-                <a class="nav-link" href="/review">Reviews</a>
-              </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link" href="">Your comments</a>
-              </li> -->
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                  </li>
-              {% else %}
-                  <li class="nav-item ">
-                    <a class="nav-link" href="{% url 'login' %}">Login</a>
-                  </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="{% url 'Register' %}">Register</a>
-                  </li>
-              {% endif %}
-            </ul>
-        </div>
-      </nav>
+          {% if user.is_authenticated %}
+          <a class="nav-link" href="/category">Review</a>
+          <a class="nav-link" href="/logout">Logout</a>
+          {% else %}
+          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link" href="/register">Register</a>
+          {% endif %}
+        </nav>
+      </div>
       <div class="container">
           {% if messages %}
           {% for message in messages %}
@@ -105,3 +166,6 @@
           {% endif %}
           {% block content %}{% endblock %}
       </div>
+</div>
+</body>
+</html>

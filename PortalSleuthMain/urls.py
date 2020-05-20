@@ -8,11 +8,12 @@ ReviewDeleteView
 from . import views
 
 urlpatterns = [
-    path('', views.review, name='PortalSleuth-review'),
-    # path('about/',views.about, name='PortalSleuth-about'),
-    # path('home/',views.home, name='PortalSleuth-home'),
-    path('review/',views.review, name='PortalSleuth-review'),
+    path('', views.home, name='PortalSleuth-home'),
+    path('contact/',views.contact, name='PortalSleuth-contact'),
 
+    path('home/',views.home, name='PortalSleuth-home'),
+    path('review/',views.review, name='PortalSleuth-review'),
+    path('category/',views.category, name='PortalSleuth-category'),
     path('review/<int:pk>/',ReviewDetailView.as_view(template_name='PortalSleuthMain/detailReview.html'), name='submit-review'),
     path('review/new/',ReviewCreateView.as_view(template_name='PortalSleuthMain/addReview.html'), name='new-review'),
     path('review/<int:pk>/update/',ReviewUpdateView.as_view(template_name='PortalSleuthMain/addReview.html'), name='update-review'),
