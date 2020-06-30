@@ -7,7 +7,7 @@ from .forms import ReviewForm
 from .models import ReviewModel
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
-    ListView,
+
     DetailView,
     CreateView,
     UpdateView,
@@ -58,13 +58,6 @@ def review(request):
 
     return render(request,'PortalSleuthMain/review.html',{'reviews':reviews,'out':overall_rating})
 
-# class ReviewListView(ListView):
-#     model = ReviewModel
-#     template_name = 'PortalSleuthMain/review.html'  # <app>/<model>_<viewtype>.html
-#     context_object_name = 'reviews'
-#     ordering=['-created_at']
-
-
 class ReviewDetailView(DetailView):
     model = ReviewModel
 
@@ -76,9 +69,7 @@ class ReviewCreateView(LoginRequiredMixin, CreateView):
         form.instance.user=self.request.user
         form.instance.websiteName="Amazon"
         return super().form_valid(form)
-#
-#
-#
+
 class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = ReviewModel
     fields = ['review']
@@ -104,11 +95,3 @@ class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.user:
             return True
         return False
-
-# @login_required
-# def post(request):
-#     if request.method=="POST":
-#         reviews=ReviewModel.objects.filter(websiteName="Amazon")
-#         form = ReviewForm(request.POST)
-#
-#         return render(request, 'PortalSleuthMain/postreview.html', {'form': form,'reviews':reviews})
