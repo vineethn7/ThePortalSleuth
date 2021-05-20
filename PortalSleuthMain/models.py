@@ -23,3 +23,16 @@ class ReviewModel(models.Model):
         return template.format(self)
     def get_absolute_url(self):
         return reverse('submit-review', kwargs={'pk': self.pk})
+
+class EmojiReviewModel(models.Model):
+    Uploader_info = models.CharField(max_length=100, editable=False, null = True)
+    websiteName = models.CharField(max_length=100,blank=False)
+    emotion=models.CharField(max_length=100,blank=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    created_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        template = '{0.websiteName} {0.user.username} {0.emotion}'
+        return template.format(self)
+    # def get_absolute_url(self):
+    #     return reverse('submit-emoji', kwargs={'pk': self.pk})

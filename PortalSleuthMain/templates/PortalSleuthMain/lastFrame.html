@@ -1,0 +1,37 @@
+{% extends 'PortalSleuthMain/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<h3>Generated Emoji</h3>
+<form action="/selectFrame/" method="post">
+  {% csrf_token %}
+<div class="col">
+<div class="row form-group">
+
+  {% if emoji == "0" %}
+  <img src="{% static 'PortalSleuthMain/angry.png' %}" />
+  {% elif emoji == "1" %}
+  <img src="{% static 'PortalSleuthMain/disgusted.png' %}" />
+  {% elif emoji == "2" %}
+  <img src="{% static 'PortalSleuthMain/fearful.png' %}" />
+  {% elif emoji == "3" %}
+  <img src="{% static 'PortalSleuthMain/happy.png' %}" />
+  {% elif emoji == "4" %}
+  <img src="{% static 'PortalSleuthMain/neutral.png' %}" />
+  {% elif emoji == "5" %}
+  <img src="{% static 'PortalSleuthMain/sad.png' %}" />
+  {% elif emoji == "6" %}
+  <img src="{% static 'PortalSleuthMain/surpriced.png' %}" />
+  {% endif %}
+</div>
+<div class="row form-group">
+  <input type="text" name="emotionIndex" value="{{ emoji }}" hidden>
+
+</div>
+<div class="row form-group">
+  <button type="submit" class="btn btn-primary" name="button">Confirm emoji</button>
+<a style="margin-left:10px;margin-right: 10px;"class="btn btn-outline-primary" href="{% url 'getVideo' %}">Retake emotions</a>
+</div>
+</div>
+</form>
+{% endblock %}

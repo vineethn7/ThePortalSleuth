@@ -1,0 +1,15 @@
+{% extends 'PortalSleuthMain/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Choose Type of Review</legend>
+                <a style="margin-right: 10px;"class="btn btn-primary" href="{% url 'new-review' %}">Add Text Review</a>
+                <a style="margin-right: 10px;"class="btn btn-primary" href="{% url 'getVideo' %}">Add Emoji Review</a>
+                <a style="float: right; margin-right: 10px;"class="btn btn-outline-info" href="{% url 'PortalSleuth-review' %}">Back</a>
+            </fieldset>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends 'PortalSleuthMain/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="#">{{ m.user.username }}</a>
+      <small class="text-muted">{{ m.created_at|date:"F d, Y" }}</small>
+    </div>
+
+
+      {% if m.emotion == "0" %}
+      <img src="{% static 'PortalSleuthMain/angry.png' %}" width="80" height="100"/>
+      <p>Angry</p>
+      {% elif m.emotion == "1" %}
+      <img src="{% static 'PortalSleuthMain/disgusted.png' %}" width="80" height="100"/>
+      <p>Disgusted</p>
+      {% elif m.emotion == "2" %}
+      <img src="{% static 'PortalSleuthMain/fearful.png' %}" width="80" height="100"/>
+      <p>Fearful</p>
+      {% elif m.emotion == "3" %}
+      <img src="{% static 'PortalSleuthMain/happy.png' %}" width="80" height="100"/>
+      <p>Happy</p>
+      {% elif m.emotion == "4" %}
+      <img src="{% static 'PortalSleuthMain/neutral.png' %}" width="80" height="100"/>
+      <p>Neutral</p>
+      {% elif m.emotion == "5" %}
+      <img src="{% static 'PortalSleuthMain/sad.png' %}" width="80" height="100"/>
+      <p>Sad</p>
+      {% elif m.emotion == "6" %}
+      <img src="{% static 'PortalSleuthMain/surpriced.png' %}" width="80" height="100"/>
+      <p>Surprised</p>
+      {% endif %}
+      <h2 class="article-title" style="float:right;">{{ m.websiteName }}</h2>
+  </div>
+</article>
+<a class="btn btn-outline-info" href="{% url 'PortalSleuth-review' %}">Back</a>
+{% endblock %}
